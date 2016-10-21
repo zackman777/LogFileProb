@@ -6,3 +6,10 @@ Net::HTTP.start("s3.amazonaws.com") { |http|
   }
 }
 
+numOfRequests = 0
+File.open('http_access_log').each do |line|
+    if line.include? "GET" then
+        numOfRequests += 1
+    end
+end
+puts "Total number of requests: #{numOfRequests}"
