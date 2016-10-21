@@ -55,7 +55,7 @@ File.open('http_access_log').each do |line|
     aug += 1
   elsif line.include? "Sep"
     sep += 1
-  elsif line.include? "Oct" and line.include? "1995" then
+  elsif line.include? "Oct" and line.include? "1995"
     oct95 += 1
   end
 end
@@ -75,12 +75,12 @@ print "July, 1995:      #{jul}\n"
 print "August, 1995:    #{aug}\n"
 print "September, 1995: #{sep}\n"
 print "October, 1995:   #{oct95}\n"
-print ""
-File.open('test').each do |line|
+puts ""
+fourerror = 0
+File.open('http_access_log').each do |line|
   if line.include? "GET" then
     space = 0
     counter = -1
-    two = 0
     while space != 2
       if line[counter] == " "
         space += 1
@@ -89,8 +89,31 @@ File.open('test').each do |line|
         counter -= 1
       end
     end
-    if line[counter + 1] == "2"
-      two += 1
+    if line[counter + 1] == "4"
+      fourerror += 1
     end
   end
 end
+percentage = (fourerror.to_f / numOfRequests).round(2)
+print "Percentage of 4xx errors: %#{percentage}"
+puts ""
+threeerror =  0
+File.open('http_access_log').each do |line|
+  if line.include? "GET" then
+    space = 0
+    counter = -1
+    while space != 2
+      if line[counter] == " "
+        space += 1
+      end
+      if space != 2
+        counter -= 1
+      end
+    end
+    if line[counter + 1] == "3"
+      threeerror += 1
+    end
+  end
+end
+percentage2 = (threeerror.to_f / numOfRequests).round(2)
+print "Percentage of 3xx errors: %#{percentage2}"
