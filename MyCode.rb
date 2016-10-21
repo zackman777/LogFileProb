@@ -29,3 +29,23 @@ File.open('test').each do |line|
     print "#{datevar}\n"
   end
 end
+
+File.open('test').each do |line|
+  if line.include? "GET" then
+    space = 0
+    counter = -1
+    two = 0
+    while space != 2
+      if line[counter] == " "
+        space += 1
+      end
+      if space != 2
+        counter -= 1
+      end
+    end
+    if line[counter + 1] == "2"
+      two += 1
+    end
+  end
+  print two
+end
