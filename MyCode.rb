@@ -117,3 +117,49 @@ File.open('http_access_log').each do |line|
 end
 percentage2 = (threeerror.to_f / numOfRequests).round(2)
 print "Percentage of 3xx errors: %#{percentage2}"
+puts ""
+biggest = 0
+biggestname = ""
+File.open('http_access_log').each do |line|
+  if line.include? "GET" then
+    spacesize = 0
+    counter = -1
+    while spacesize != 1
+      if line[counter] == " "
+        spacesize += 1
+      end
+      if spacesize != 1
+        counter -= 1
+      end
+    end
+    size = line[counter + 1, (counter + 1) * -1].to_i
+    if size > biggest
+      biggest = size
+      space2 = 0
+      counter2 = -1
+      while space2 != 4
+        if line[counter2] == " "
+          space2 += 1
+        end
+        if space2 != 4
+          counter2 -= 1
+        end
+      end
+      index1 = counter2 + 1
+      space3 = 0
+      counter3 = -1
+      while space3 != 3
+        if line[counter3] == " "
+          space3 += 1
+        end
+        if space3 != 3
+          counter3 -= 1
+        end
+      end
+      index2 = counter3
+      biggestname = line[index1, index2].to_s
+    end
+  end
+end
+puts ""
+puts "Most requested file: #{biggestname}"

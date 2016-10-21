@@ -1,6 +1,0 @@
-local - - [24/Oct/1994:13:41:41 -0600] "GET index.html HTTP/1.0" 400 150
-local - - [24/Oct/1994:13:41:41 -0600] "GET 1.gif HTTP/1.0" 200 1210
-local 780     index.html
-local      index.html
-local - - [25/Oct/1994:15:02:34 -0600] "GET 4.gif HTTP/1.0" 200 441
-remote - - [24/Oct/1994:14:03:32 -0600] "GET 20.html HTTP/1.0" 200 1530
