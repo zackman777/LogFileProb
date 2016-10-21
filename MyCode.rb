@@ -13,3 +13,19 @@ File.open('http_access_log').each do |line|
     end
 end
 puts "Total number of requests: #{numOfRequests}"
+
+numOfDayRequests = 0
+datevar = ""
+File.open('test').each do |line|
+  if line.include? "GET" and line.include? "local" then
+    datevar = line[11, 11]
+  elsif line.include? "GET" and line.include? "remote" then
+    datevar = line[12, 11]
+  else
+    datevar = ""
+    numOfDayRequests += 1
+  end
+  if datevar != "" then
+    print "#{datevar}\n"
+  end
+end
