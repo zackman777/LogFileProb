@@ -12,24 +12,70 @@ File.open('http_access_log').each do |line|
         numOfRequests += 1
     end
 end
-puts "Total number of requests: #{numOfRequests}"
-
+puts "**********************************"
+puts "|Total number of requests: #{numOfRequests}|"
+puts "**********************************"
+puts ""
 numOfDayRequests = 0
-datevar = ""
-File.open('test').each do |line|
-  if line.include? "GET" and line.include? "local" then
-    datevar = line[11, 11]
-  elsif line.include? "GET" and line.include? "remote" then
-    datevar = line[12, 11]
-  else
-    datevar = ""
-    numOfDayRequests += 1
-  end
-  if datevar != "" then
-    print "#{datevar}\n"
+oct94 = 0
+nov = 0
+dec = 0
+jan = 0
+feb = 0
+mar = 0
+apr = 0
+may = 0
+jun = 0
+jul = 0
+aug = 0
+sep = 0
+oct95 = 0
+File.open('http_access_log').each do |line|
+  if line.include? "Oct" and line.include? "1994" then
+    oct94 += 1
+  elsif line.include? "Nov"
+    nov += 1
+  elsif line.include? "Dec"
+    dec += 1
+  elsif line.include? "Jan"
+    jan += 1
+  elsif line.include? "Feb"
+    feb += 1
+  elsif line.include? "Mar"
+    mar += 1
+  elsif line.include? "Apr"
+    apr += 1
+  elsif line.include? "May"
+    may += 1
+  elsif line.include? "Jun"
+    jun += 1
+  elsif line.include? "Jul"
+    jul += 1
+  elsif line.include? "Aug"
+    aug += 1
+  elsif line.include? "Sep"
+    sep += 1
+  elsif line.include? "Oct" and line.include? "1995" then
+    oct95 += 1
   end
 end
-
+print "********************************\n"
+print "|Number of requests per month: |\n"
+print "********************************\n"
+print "October, 1994:   #{oct94}\n"
+print "November, 1994:  #{nov}\n"
+print "December, 1994:  #{dec}\n"
+print "January, 1995:   #{jan}\n"
+print "February, 1995:  #{feb}\n"
+print "March, 1995:     #{mar}\n"
+print "April, 1995:     #{apr}\n"
+print "May, 1995:       #{may}\n"
+print "June, 1995:      #{jun}\n"
+print "July, 1995:      #{jul}\n"
+print "August, 1995:    #{aug}\n"
+print "September, 1995: #{sep}\n"
+print "October, 1995:   #{oct95}\n"
+print ""
 File.open('test').each do |line|
   if line.include? "GET" then
     space = 0
@@ -47,5 +93,4 @@ File.open('test').each do |line|
       two += 1
     end
   end
-  print two
 end
